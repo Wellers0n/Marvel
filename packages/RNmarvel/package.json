@@ -1,0 +1,31 @@
+{
+  "name": "@expo/app",
+  "description": "expo app",
+  "version": "1.0.0",
+  "author": "Wellerson",
+  "license": "MIT",
+  "private": true,
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "eject": "expo eject"
+  },
+  "dependencies": {
+    "add": "^2.0.6",
+    "axios": "^0.18.0",
+    "expo": "^32.0.0",
+    "js-md5": "^0.7.3",
+    "react": "^16.8.2",
+    "react-native": "https://github.com/the-atelier/react-native#sdk-32",
+    "react-navigation": "^3.11.0",
+    "react-redux": "^7.0.3",
+    "redux": "^4.0.1",
+    "remove": "^0.1.5",
+    "yarn": "^1.16.0"
+  },
+  "devDependencies": {
+    "babel-preset-expo": "^5.0.0"
+  }
+}

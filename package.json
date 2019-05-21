@@ -1,0 +1,20 @@
+{
+  "name": "main",
+  "version": "1.0.0",
+  "description": "api marvel",
+  "main": "index.js",
+  "author": "Wellerson",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "yarn start:web & yarn start:server",
+    "start:web": "yarn workspace @react/web start",
+    "start:server": "yarn workspace @graphql/server start",
+    "start:app": "yarn workspace @expo/app start"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  }
+}
