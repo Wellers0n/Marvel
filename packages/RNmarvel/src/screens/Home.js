@@ -3,18 +3,18 @@ import { TouchableOpacity, View, Button, FlatList, Text, Image, StyleSheet } fro
 import { FetchReq } from '../FetchApi/Fetchings'
 import {connect} from 'react-redux'
 
-const Home = ({navigation, limit, onLimitClick}) => {
+const Home = ({navigation, offset, onLimitClick}) => {
     const [data, setData] = useState([])
 
     useEffect(() => {
-        console.log(limit)
+        console.log(offset)
         const fetchData = async () => {
-            const result = await FetchReq(limit)
-            setData(result);
+            const result = await FetchReq(offset)
+            setData([...data, ...result]);
         }
 
         fetchData()
-      }, [limit]);
+      }, [offset]);
 
     const _renderItem = ({item}) => {
         return  (
@@ -41,7 +41,7 @@ const Home = ({navigation, limit, onLimitClick}) => {
                 renderItem={_renderItem}
                 keyExtractor={(item, index) => index.toString()}
                 onEndReached={onLimitClick}
-                onEndReachedThreshold={0.9}
+                onEndReachedThreshold={1}
             />
             {/* <Button onPress={onLimitClick} title={'click'}/> */}
         </>
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
 })
 
 const mapStateToProps = (state) => ({
-    limit: state.limit
+    offset: state.offset
 })
 
 const mapDispatchToProps = (dispatch) => ({

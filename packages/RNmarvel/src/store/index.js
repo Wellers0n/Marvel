@@ -1,11 +1,11 @@
 import {createStore} from 'redux'
 
-const limited = (state = {limit: 20} , action) => {
+const limited = (state = {offset: 0} , action) => {
     switch (action.type) {
         case "BOTTOM_END":
             return {
                 ...state,
-                limit: (state.limit === 100 ) ? state.limit : state.limit + 20
+                offset: state.offset + 30
             }
                 
         default:
