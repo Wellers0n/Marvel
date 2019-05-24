@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { TouchableOpacity, View, Button, FlatList, Text, Image, StyleSheet } from 'react-native'
 import { FetchReq } from '../FetchApi/Fetchings'
 import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
 
 const Home = ({navigation, offset, onLimitClick}) => {
     const [data, setData] = useState([])
@@ -68,8 +69,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    onLimitClick: () => dispatch({type: 'BOTTOM_END'})
-    
+     onLimitClick: () => dispatch({type: 'BOTTOM_END'})
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)

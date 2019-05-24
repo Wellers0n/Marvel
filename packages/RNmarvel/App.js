@@ -15,7 +15,7 @@ let Root = createStackNavigator({
   Description: {
     screen: Description,
     navigationOptions: {
-      title: 'Home'
+      title: 'Description'
     }
   },
 })
