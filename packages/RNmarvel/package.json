@@ -7,7 +7,7 @@
   "private": true,
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "expo start",
+    "start": "expo start -c",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "eject": "expo eject"
@@ -22,6 +22,7 @@
     "react-navigation": "^3.11.0",
     "react-redux": "^7.0.3",
     "redux": "^4.0.1",
+    "redux-saga": "^1.0.2",
     "remove": "^0.1.5",
     "yarn": "^1.16.0"
   },
