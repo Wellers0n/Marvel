@@ -1,13 +1,14 @@
-import {takeEvery, put} from 'redux-saga/effects'
+import {takeEvery, put, all, select} from 'redux-saga/effects'
 
 function* fetchApi(){
+    // const state = yield select(state => state)
+    // console.log(state)
     yield put({type: 'BOTTOM_END'})
+
 }
 
 function* root(){
-    yield [
-        takeEvery('FETCHING', fetchApi)
-    ]
+    yield all([ takeEvery('FETCHING', fetchApi) ])
 }
 
 export default root
