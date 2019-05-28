@@ -1,22 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, {useEffect} from 'react';
 import { TouchableOpacity, View, Button, FlatList, Text, Image, StyleSheet } from 'react-native'
-import { FetchReq } from '../FetchApi/Fetchings'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import onLimitClick from './../action/fetching'
+import {Fetching, Offset} from './../action/index'
+import Loading from './Loading'
 
-const Home = ({navigation, offset, onLimitClick}) => {
-    const [data, setData] = useState([])
-
+const Home = ({navigation, stateOffset, offsetIncrement, fetching, stateFetch}) => {
     useEffect(() => {
-        console.log(offset)
-        const fetchData = async () => {
-            const result = await FetchReq(offset)
-            setData([...data, ...result]);
-        }
-
-        fetchData()
-      }, [offset]);
+        console.log(stateFetch.loading, stateFetch.error)
+        fetching()
+    }, [stateOffset])
 
     const _renderItem = ({item}) => {
         return  (
@@ -24,7 +17,7 @@ const Home = ({navigation, offset, onLimitClick}) => {
               style={styles.container}
             >
                 <Image style={styles.img}
-                  source={{uri: `${item.thumbnail.path}.${item.thumbnail.extension}` }}
+                    source={{uri: `${item.thumbnail.path}.${item.thumbnail.extension}` }}
                 />
                 <Text style={{marginLeft: 10}}>{item.name}</Text>
             </TouchableOpacity>
@@ -36,18 +29,21 @@ const Home = ({navigation, offset, onLimitClick}) => {
     }
 
 
-    return (
-        <>
-            <FlatList
-                data={data}
-                renderItem={_renderItem}
-                keyExtractor={(item, index) => index.toString()}
-                onEndReached={onLimitClick}
-                onEndReachedThreshold={1}
-            />
-            {/* <Button onPress={onLimitClick} title={'click'}/> */}
-        </>
-    )
+    if(stateFetch.loading){
+        return <Loading/>
+    }else{
+        return (
+            <View>
+                <FlatList
+                    data={stateFetch.data}
+                    renderItem={_renderItem}
+                    keyExtractor={(item, index) => index.toString()}
+                    onEndReached={offsetIncrement}
+                    onEndReachedThreshold={1}
+                />
+            </View>
+        )
+    }
 }
 
 const styles = StyleSheet.create({
@@ -66,12 +62,14 @@ const styles = StyleSheet.create({
 })
 
 const mapStateToProps = (state) => ({
-    offset: state.offset.offset
+    stateFetch: state.fetching,
+    stateOffset: state.offset.offset
 })
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onLimitClick: bindActionCreators(onLimitClick, dispatch)
+        fetching: bindActionCreators(Fetching, dispatch),
+        offsetIncrement: bindActionCreators(Offset, dispatch)
     }
 }
 

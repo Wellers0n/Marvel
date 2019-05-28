@@ -1,6 +1,6 @@
 function reduce(state = {offset: 0}, action){
   switch (action.type) {
-        case "BOTTOM_END":
+        case "OFFSET_INCREMENT":
             return {
                 ...state,
                 offset: state.offset + 30
