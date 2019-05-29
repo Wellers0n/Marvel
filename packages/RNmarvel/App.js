@@ -9,13 +9,13 @@ let Root = createStackNavigator({
   Home: {
     screen: Home,
     navigationOptions: {
-      title: 'Home'
+      header: null
     }
   },
   Description: {
     screen: Description,
     navigationOptions: {
-      title: 'Description'
+      header: null
     }
   },
 })

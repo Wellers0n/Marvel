@@ -19,6 +19,7 @@
     "js-md5": "^0.7.3",
     "react": "^16.8.2",
     "react-native": "https://github.com/the-atelier/react-native#sdk-32",
+    "react-native-elements": "^1.1.0",
     "react-navigation": "^3.11.0",
     "react-redux": "^7.0.3",
     "redux": "^4.0.1",
