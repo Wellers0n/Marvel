@@ -1,6 +1,6 @@
 import React from 'react';
 import {TouchableOpacity, View, Text, StyleSheet} from 'react-native';
-import {Card, Avatar} from 'react-native-elements';
+import {Card, Avatar, Overlay} from 'react-native-elements';
 
 const CardMain = ({item, navigation}) => {
 
@@ -12,6 +12,7 @@ const CardMain = ({item, navigation}) => {
         <TouchableOpacity onPress={() => _onItemPress(item)}
           
         >
+            
             <Card title="Character" >
                 <View style={styles.container}>
                     {/* <Image style={styles.img}

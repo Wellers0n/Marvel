@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import {Fetching, Offset} from './../action/index'
 import Loading from './Loading'
-import { Header, Overlay } from 'react-native-elements';
+import { Header } from 'react-native-elements';
 import Card from './../components/Card'
 
 const Home = ({navigation, stateOffset, offsetIncrement, fetching, stateFetch}) => {

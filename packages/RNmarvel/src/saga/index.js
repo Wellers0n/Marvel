@@ -12,7 +12,7 @@ function* fetchApi(){
     console.log(offset)
     //fetch
     const response = yield fetch(`https://gateway.marvel.com/v1/public/characters?offset=${offset}&ts=${timestamp}&orderBy=name&limit=${30}&apikey=${PUBLIC_KEY}&hash=${hash.hex()}`)
-    const  jsonResponse = yield response.json()
+    const jsonResponse = yield response.json()
     return jsonResponse
 
 }

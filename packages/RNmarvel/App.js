@@ -1,3 +1,7 @@
+if(__DEV__) {
+  import('./ReactotronConfig').then(() => console.log('Reactotron Configured'))
+}
+
 import React from 'react'
 import Home from './src/screens/Home'
 import Description from './src/screens/Description'
