@@ -1,33 +1,31 @@
-import React from 'react';
-import Home from './src/screens/Home';
-import Description from './src/screens/Description';
-import { createStackNavigator, createAppContainer } from 'react-navigation';
-import { Provider } from 'react-redux';
-import store from './src/store/index';
+import React from "react";
+import Home from "./src/screens/Home";
+import Description from "./src/screens/Description";
+import { createStackNavigator, createAppContainer } from "react-navigation";
+import { Provider } from "react-redux";
+import store from "./src/store/index";
+import { ROUTES } from './roots'
+import {homeConfig, descriptionConfig} from './config-navigation'
 
 let Root = createStackNavigator({
-  Home: {
+  [ROUTES.HOME]: {
     screen: Home,
-    navigationOptions: {
-      header: null
-    }
+    ...homeConfig
   },
-  Description: {
+  [ROUTES.DESCRIPTION]: {
     screen: Description,
-    navigationOptions: {
-      header: null
-    }
-  },
+    ...descriptionConfig
+  }
 });
 
-let Navigation = createAppContainer(Root);
+const Navigation = createAppContainer(Root);
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <Provider store={store}>
-        <Navigation />
-      </Provider>
-    );
-  }
+const App = () => {
+  return (
+    <Provider store={store}>
+      <Navigation />
+    </Provider>
+  );
 };
+
+export default App

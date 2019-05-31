@@ -1,22 +1,22 @@
 const INITIAL_STATE = {
-    darkmode: false
-}
+  darkmode: false
+};
 
-export default function(state = INITIAL_STATE, action){
-    switch (action.type) {
-        case "DARKMODE_ON":
-            return {
-                ...state,
-                darkmode: true
-            }
-        case "DARKMODE_OFF":
-            return {
-                ...state,
-                darkmode: false
-            }
-        default:
-            return {
-                ...state
-            }
-    }
+export default function(state = INITIAL_STATE, action) {
+  switch (action.type) {
+    case "DARKMODE_ON":
+      return {
+        ...state,
+        darkmode: true
+      };
+    case "DARKMODE_OFF":
+      return {
+        ...state,
+        darkmode: false
+      };
+    default:
+      return {
+        ...state
+      };
+  }
 }
