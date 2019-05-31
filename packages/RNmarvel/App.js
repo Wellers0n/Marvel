@@ -9,11 +9,11 @@ import { ROUTES } from "./roots";
 const Root = createStackNavigator({
   [ROUTES.HOME]: {
     screen: Home,
-    ...homeConfig
+    navigationOptions: homeConfig
   },
   [ROUTES.DESCRIPTION]: {
     screen: Description,
-    ...homeConfig
+    navigationOptions: homeConfig
   }
 });
 
