@@ -9,7 +9,7 @@ export default function(state = INITIAL_STATE, action){
                 ...state,
                 darkmode: true
             }
-        case "DARKMODE_ OFF":
+        case "DARKMODE_OFF":
             return {
                 ...state,
                 darkmode: false

@@ -1,11 +1,15 @@
 import React, { Component } from 'react'
 import { ScrollView, Image, Dimensions, Text } from 'react-native'
 import { Header, Icon, Button } from 'react-native-elements';
+import {connect} from 'react-redux'
 
 const SCREEN_WIDTH = Dimensions.get('screen').width
 
-export default class Description extends Component {
-
+class Description extends Component {
+    componentDidMount(){
+        console.log(this.props.stateDarkMode)
+    }
+    
     render() {
         const { hero } = this.props.navigation.state.params
         
@@ -31,4 +35,8 @@ export default class Description extends Component {
     }
     
 }
+const mapStateToProps = (state) => ({
+    stateDarkMode: state.darkMode.darkmode
+})
 
+export default connect(mapStateToProps, null)(Description)

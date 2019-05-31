@@ -9,7 +9,7 @@ function* fetchApi(){
     const hash = md5.create()
     hash.update(timestamp + PRIVATE_KEY + PUBLIC_KEY)
     const offset = yield select(state => state.offset.offset)
-    console.log(offset)
+
     //fetch
     const response = yield fetch(`https://gateway.marvel.com/v1/public/characters?offset=${offset}&ts=${timestamp}&orderBy=name&limit=${30}&apikey=${PUBLIC_KEY}&hash=${hash.hex()}`)
     const jsonResponse = yield response.json()
