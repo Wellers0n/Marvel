@@ -1,11 +1,10 @@
 import React from "react";
-import Home from "./src/screens/Home";
+import Home, {homeConfig} from "./src/screens/Home";
 import Description from "./src/screens/Description";
 import { createStackNavigator, createAppContainer } from "react-navigation";
 import { Provider } from "react-redux";
 import store from "./src/store/index";
 import { ROUTES } from "./roots";
-import { homeConfig, descriptionConfig } from "./config-navigation";
 
 const Root = createStackNavigator({
   [ROUTES.HOME]: {
@@ -14,7 +13,7 @@ const Root = createStackNavigator({
   },
   [ROUTES.DESCRIPTION]: {
     screen: Description,
-    ...descriptionConfig
+    ...homeConfig
   }
 });
 

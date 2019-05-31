@@ -8,6 +8,12 @@ import { Header } from "react-native-elements";
 import Card from "./../components/Card";
 import { darkModeOFF, darkModeON } from "./../action/darkMode";
 
+export const homeConfig = {
+  navigationOptions: {
+      header: null
+    }
+}
+
 const Home = ({
   navigation,
   stateOffset,
