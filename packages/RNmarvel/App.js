@@ -4,10 +4,10 @@ import Description from "./src/screens/Description";
 import { createStackNavigator, createAppContainer } from "react-navigation";
 import { Provider } from "react-redux";
 import store from "./src/store/index";
-import { ROUTES } from './roots'
-import {homeConfig, descriptionConfig} from './config-navigation'
+import { ROUTES } from "./roots";
+import { homeConfig, descriptionConfig } from "./config-navigation";
 
-let Root = createStackNavigator({
+const Root = createStackNavigator({
   [ROUTES.HOME]: {
     screen: Home,
     ...homeConfig
@@ -28,4 +28,4 @@ const App = () => {
   );
 };
 
-export default App
+export default App;
