@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { ScrollView, Image, Dimensions, Text } from "react-native";
-import { Header, Icon, Button } from "react-native-elements";
+import { ScrollView, Image, Dimensions, Text, StyleSheet } from "react-native";
+import { Header, Icon, Button, } from "react-native-elements";
 import { connect } from "react-redux";
 
 const SCREEN_WIDTH = Dimensions.get("screen").width;
@@ -41,6 +41,11 @@ class Description extends Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  
+})
+
 const mapStateToProps = state => ({
   stateDarkMode: state.darkMode.darkmode
 });

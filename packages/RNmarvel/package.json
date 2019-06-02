@@ -24,6 +24,7 @@
     "redux": "^4.0.1",
     "redux-saga": "^1.0.2",
     "remove": "^0.1.5",
+    "styled-components": "^4.2.1",
     "yarn": "^1.16.0"
   },
   "devDependencies": {

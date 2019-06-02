@@ -13,16 +13,26 @@ function* fetchApi() {
   const response = yield fetch(
     `https://gateway.marvel.com/v1/public/characters?offset=${offset}&ts=${timestamp}&orderBy=name&limit=${30}&apikey=${PUBLIC_KEY}&hash=${hash.hex()}`
   );
+  // pass json()
   const jsonResponse = yield response.json();
+
+  // return result
   return jsonResponse;
 }
 
 function* asyncAdd() {
   try {
-    // yield put({type: "BOTTOM_END"})
+
+    // data result
     const response = yield call(fetchApi);
-    // console.log(response)
+
+    // imcrement offset
+    yield put({ type: "OFFSET_INCREMENT" });
+
+    // get data old
     const data = yield select(state => state.fetching.data);
+
+    // success
     yield put({
       type: "SUCESS_FETCH_LIST",
       payload: { data: [...data, ...response.data.results] }
@@ -33,6 +43,7 @@ function* asyncAdd() {
   }
 }
 
+// root
 function* root() {
   yield all([takeEvery("REQUEST_FETCH_LIST", asyncAdd)]);
 }
