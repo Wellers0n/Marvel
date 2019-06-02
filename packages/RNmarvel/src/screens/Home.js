@@ -1,13 +1,14 @@
 import React, { useEffect } from "react";
-import { View, FlatList, Switch, Button } from "react-native";
+import { View, Switch, Button } from "react-native";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { Fetching, Offset } from "./../action/index";
 import Loading from "./Loading";
-import { Header } from "react-native-elements";
+import { Header, Icon } from "react-native-elements";
 import Card from "./../components/Card";
 import { darkModeOFF, darkModeON } from "./../action/darkMode";
-// import styled, { ThemeProvider } from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
+import Theme, { TextMode, HeaderMode } from "./../../darkmode";
 
 export function homeConfig({ navigation }) {
   return {
@@ -20,35 +21,68 @@ const Home = ({
   fetching,
   stateFetch,
   stateDarkMode,
-  darkModeON
+  darkModeON,
+  darkModeOFF
 }) => {
-
   // fetch more dada
   useEffect(() => {
     fetching();
-    console.log("useEffect");
   }, []);
 
-  // useEffect(() => {
-  //   console.log(stateDarkMode);
-  // }, [stateDarkMode])
+  const FlatList = styled.FlatList`
+    backgroundColor: ${props => props.theme.main};
+  `;
+
+  const MyCustomLeftComponent = () => {
+    return (
+      <Icon name={"home"} iconStyle={{ color: TextMode(stateDarkMode) }} />
+    );
+  };
+
+  const MyCustomRightComponent = () => {
+    return (
+      <Switch
+        value={stateDarkMode}
+        onValueChange={value => {
+          if (value) {
+            darkModeON();
+          } else {
+            darkModeOFF();
+          }
+        }}
+      />
+    );
+  };
 
   return (
     <View>
       <Header
-        backgroundColor={"#f1f1f1"}
-        centerComponent={{ text: "Home", h4: true }}
-        leftComponent={{ icon: "home", h4: true, style: { color: "#fff" } }}
+        backgroundColor={HeaderMode(stateDarkMode)}
+        centerComponent={{
+          text: "Home",
+          h4: true,
+          style: { color: TextMode(stateDarkMode) }
+        }}
+        leftComponent={<MyCustomLeftComponent />}
+        rightComponent={<MyCustomRightComponent />}
       />
-      {/* <Button title="Click" onPress={darkModeON} /> */}
-      <FlatList
-        data={stateFetch.data}
-        renderItem={({ item }) => <Card item={item} navigation={navigation} />}
-        keyExtractor={(item, index) => index.toString()}
-        onEndReached={fetching}
-        onEndReachedThreshold={1}
-      />
-      {stateFetch.loading && <Loading/>}
+      <ThemeProvider theme={Theme(stateDarkMode)}>
+        <FlatList
+          data={stateFetch.data}
+          renderItem={({ item }) => (
+            <Card
+              item={item}
+              navigation={navigation}
+              stateDarkMode={stateDarkMode}
+            />
+          )}
+          keyExtractor={(item, index) => index.toString()}
+          onEndReached={fetching}
+          onEndReachedThreshold={1}
+        />
+      </ThemeProvider>
+
+      {stateFetch.loading && <Loading />}
     </View>
   );
 };
