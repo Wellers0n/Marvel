@@ -26,6 +26,7 @@ const Home = ({
 }) => {
   // fetch more dada
   useEffect(() => {
+    console.log("fetch data");
     fetching();
   }, []);
 
@@ -68,6 +69,9 @@ const Home = ({
       />
       <ThemeProvider theme={Theme(stateDarkMode)}>
         <FlatList
+          shouldItemUpdate={(props, nextProps) => {
+            return props.item !== nextProps.item;
+          }}
           data={stateFetch.data}
           renderItem={({ item }) => (
             <Card
@@ -82,7 +86,7 @@ const Home = ({
         />
       </ThemeProvider>
 
-      {stateFetch.loading && <Loading />}
+      {/* {stateFetch.loading && <Loading />} */}
     </View>
   );
 };

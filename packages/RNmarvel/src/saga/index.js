@@ -33,6 +33,7 @@ function* asyncAdd() {
     const data = yield select(state => state.fetching.data);
 
     // success
+    console.log('sucess');
     yield put({
       type: "SUCESS_FETCH_LIST",
       payload: { data: [...data, ...response.data.results] }
