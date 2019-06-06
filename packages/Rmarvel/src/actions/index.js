@@ -1,5 +1,11 @@
 export function Offset(){
     return {
-        type: "INCREMENT_OFFSET"
+        type: "OFFSET_INCREMENT"
+    }
+}
+
+export function Fetching(){
+    return {
+        type: "REQUEST_FETCH_LIST"
     }
 }

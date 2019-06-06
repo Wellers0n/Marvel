@@ -1,28 +1,44 @@
 import React, { useEffect } from "react";
 import { bindActionCreators } from "redux";
-import { Offset } from "./../actions/index";
+import { Offset, Fetching } from "./../actions/index";
 import { connect } from "react-redux";
 
-const Home = ({ stateOffset, increment }) => {
+const Home = ({ stateOffset, increment, history, fetching, stateFetch }) => {
   useEffect(() => {
-    console.log(stateOffset);
+    console.log("useEffetc");
+    fetching();
+    window.addEventListener("scroll", handleScroll);
   }, []);
 
+  const handleScroll = () => {
+    console.log("scroll");
+    const lastScrollY = window.scrollY;
+    const lastScrollMaxY = window.scrollMaxY;
+    if (lastScrollY === lastScrollMaxY) {
+      fetching();
+      console.log("request fetch");
+    }
+  };
+
   return (
-  <div>
-    <div>{stateOffset}</div>
-    <button title='click' onClick={increment}/>
-  </div>
+    <div id="nice">
+      {stateFetch.data.map((item, index) => {
+        return <div key={index}>nome: {item.name}</div>;
+      })}
+      {stateFetch && <div>Loading...</div>}
+    </div>
   );
 };
 
 const mapStateToProps = state => ({
-  stateOffset: state.offset.offset
+  stateOffset: state.offset.offset,
+  stateFetch: state.fetching
 });
 
 const mapDispatchToProps = dispatch => {
   return {
-    increment: bindActionCreators(Offset, dispatch)
+    increment: bindActionCreators(Offset, dispatch),
+    fetching: bindActionCreators(Fetching, dispatch)
   };
 };
 
