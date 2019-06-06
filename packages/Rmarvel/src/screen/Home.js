@@ -2,28 +2,33 @@ import React, { useEffect } from "react";
 import { bindActionCreators } from "redux";
 import { Offset, Fetching } from "./../actions/index";
 import { connect } from "react-redux";
+import Card from "./../components/Card";
 
-const Home = ({ stateOffset, increment, history, fetching, stateFetch }) => {
+const Home = ({ history, fetching, stateFetch }) => {
+  // useEffect
   useEffect(() => {
     console.log("useEffetc");
     fetching();
     window.addEventListener("scroll", handleScroll);
   }, []);
 
+  // scroll infinity
   const handleScroll = () => {
     console.log("scroll");
     const lastScrollY = window.scrollY;
     const lastScrollMaxY = window.scrollMaxY;
-    if (lastScrollY === lastScrollMaxY) {
+    const location = window.location.pathname;
+    console.log(location);
+    if (lastScrollY === lastScrollMaxY && location === "/") {
       fetching();
       console.log("request fetch");
     }
   };
-
+  // render
   return (
     <div id="nice">
       {stateFetch.data.map((item, index) => {
-        return <div key={index}>nome: {item.name}</div>;
+        return <Card key={index} history={history} item={item} />;
       })}
       {stateFetch && <div>Loading...</div>}
     </div>
@@ -31,13 +36,11 @@ const Home = ({ stateOffset, increment, history, fetching, stateFetch }) => {
 };
 
 const mapStateToProps = state => ({
-  stateOffset: state.offset.offset,
   stateFetch: state.fetching
 });
 
 const mapDispatchToProps = dispatch => {
   return {
-    increment: bindActionCreators(Offset, dispatch),
     fetching: bindActionCreators(Fetching, dispatch)
   };
 };
