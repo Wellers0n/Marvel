@@ -20,4 +20,4 @@
 
   ### Default `/`
 
-<img src="./imgs/web1" align="center"/>
+<img src="./imgs/web1.png" align="center"/>
