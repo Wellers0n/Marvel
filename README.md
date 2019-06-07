@@ -22,6 +22,6 @@
 
   <img src="./imgs/web1.png" align="center"/>
   
-  ### Route description `/description` description of item
+  ### Route description `/description` is description of item
   
   <img src="./imgs/web2.png" align="center"/>
