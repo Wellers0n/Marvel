@@ -1,4 +1,4 @@
-# Consuming a list of Marvel Studios
+# Consuming an API of Marvel Studios
 
   ## Used
   
