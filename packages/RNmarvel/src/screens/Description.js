@@ -6,56 +6,47 @@ import { TextMode, HeaderMode, ModeTheme } from "./../../darkmode";
 
 const SCREEN_WIDTH = Dimensions.get("screen").width;
 
-class Description extends Component {
-  render() {
-    const { hero } = this.props.navigation.state.params;
-    const { stateDarkMode } = this.props;
+const Description = ({ navigation, stateDarkMode }) => {
+  const { hero } = navigation.state.params;
 
-    const MyCustomLeftComponent = () => (
-      <Icon
-        name={"arrow-back"}
-        iconStyle={{ color: TextMode(stateDarkMode) }}
-        onPress={() => this.props.navigation.goBack()}
+  const MyCustomLeftComponent = () => (
+    <Icon
+      name={"arrow-back"}
+      iconStyle={{ color: TextMode(stateDarkMode) }}
+      onPress={() => navigation.goBack()}
+    />
+  );
+
+  return (
+    <>
+      <Header
+        backgroundColor={HeaderMode(stateDarkMode)}
+        centerComponent={{
+          text: "Description",
+          h4: true,
+          style: { color: TextMode(stateDarkMode) }
+        }}
+        leftComponent={<MyCustomLeftComponent />}
       />
-    );
-
-    return (
-      <>
-        <Header
-          backgroundColor={HeaderMode(stateDarkMode)}
-          centerComponent={{
-            text: "Description",
-            h4: true,
-            style: { color: TextMode(stateDarkMode) }
+      <ScrollView style={{ backgroundColor: ModeTheme(stateDarkMode) }}>
+        <Image
+          source={{
+            uri: `${hero.thumbnail.path}.${hero.thumbnail.extension}`
           }}
-          leftComponent={<MyCustomLeftComponent />}
+          style={{ width: SCREEN_WIDTH, height: SCREEN_WIDTH }}
         />
-        <ScrollView style={{ backgroundColor: ModeTheme(stateDarkMode) }}>
-          <Image
-            source={{
-              uri: `${hero.thumbnail.path}.${hero.thumbnail.extension}`
-            }}
-            style={{ width: SCREEN_WIDTH, height: SCREEN_WIDTH }}
-          />
-          <Text
-            style={{
-              padding: 10,
-              fontSize: 20,
-              color: TextMode(stateDarkMode)
-            }}
-          >
-            {hero.name}
-          </Text>
-          <Text style={{ padding: 10, color: TextMode(stateDarkMode) }}>
-            {hero.description}
-          </Text>
-        </ScrollView>
-      </>
-    );
-  }
-}
-
-const styles = StyleSheet.create({});
+        <Text
+          style={{ padding: 10, fontSize: 20, color: TextMode(stateDarkMode) }}
+        >
+          {hero.name}
+        </Text>
+        <Text style={{ padding: 10, color: TextMode(stateDarkMode) }}>
+          {hero.description}
+        </Text>
+      </ScrollView>
+    </>
+  );
+};
 
 const mapStateToProps = state => ({
   stateDarkMode: state.darkMode.darkmode
