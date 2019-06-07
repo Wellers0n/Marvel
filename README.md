@@ -1,4 +1,4 @@
-# Consuming a list of Marvel Studios
+# Consuming an API of Marvel Studios
 
   ## Used
   
@@ -9,7 +9,7 @@
   - Material-UI
   - React-native-elements
   
-# Initing in the your PC
+## Initing in the your PC
 
 - For clone the project `git clone https://github.com/Wellers0n/Marvel.git`
 - Enter in the folder `cd Marvel/`
