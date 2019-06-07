@@ -29,7 +29,7 @@ const CardComponent = ({ classes, history, item }) => {
   return (
     <Container maxWidth="sm" className={classes.container} fixed>
       <Card className={classes.containerCard}>
-        <CardActionArea onClick={() => history.push({pathname: "/sobre", state: item})}>
+        <CardActionArea onClick={() => history.push({pathname: "/description", state: item})}>
           <CardMedia
             component="img"
             alt="Contemplative Reptile"

@@ -11,7 +11,7 @@ const Routers = ({store}) => {
         <div>
           <Switch>
             <Route path="/" exact component={Home} />
-            <Route path="/sobre" exact component={Description} />
+            <Route path="/description" exact component={Description} />
           </Switch>
         </div>
       </BrowserRouter>

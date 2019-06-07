@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { bindActionCreators } from "redux";
 import { Offset, Fetching } from "./../actions/index";
+import Loading from './Loading'
 import { connect } from "react-redux";
 import Card from "./../components/Card";
 
@@ -30,7 +31,7 @@ const Home = ({ history, fetching, stateFetch }) => {
       {stateFetch.data.map((item, index) => {
         return <Card key={index} history={history} item={item} />;
       })}
-      {stateFetch && <div>Loading...</div>}
+      {stateFetch && <Loading/>}
     </div>
   );
 };
