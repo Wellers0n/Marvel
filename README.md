@@ -15,3 +15,9 @@
 - Enter in the folder `cd Marvel/`
 - To install project dependency: `yarn install`
 - After the installation of the dependencies `yarn start` in the default directory
+
+## Routers in the web
+
+  ### Default `/`
+
+<img src="./imgs/web1" align="center"/>
