@@ -18,6 +18,10 @@
 
 ## Routers in the web
 
-  ### Default `/`
+  ### Default `/` a listing of items
 
-<img src="./imgs/web1.png" align="center"/>
+  <img src="./imgs/web1.png" align="center"/>
+  
+  ### Sobre `/sobre` description of item
+  
+  <img src="./imgs/web2.png" align="center"/>
